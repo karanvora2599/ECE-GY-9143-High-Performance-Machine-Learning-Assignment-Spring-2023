@@ -1,0 +1,20 @@
+Processor: Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz
+RAM: 235Gi
+GPU:     Product Name                          : Quadro RTX 8000
+Files already downloaded and verified
+Files already downloaded and verified
+
+Epoch: 0
+In epoch: 0, data preperation time takes 0.196657, all the batches together take 36.909225 and overall epoch 38.769718: 
+
+Epoch: 1
+In epoch: 1, data preperation time takes 0.204856, all the batches together take 19.655856 and overall epoch 21.799284: 
+
+Epoch: 2
+In epoch: 2, data preperation time takes 0.202195, all the batches together take 19.654959 and overall epoch 21.784801: 
+
+Epoch: 3
+In epoch: 3, data preperation time takes 0.200949, all the batches together take 19.687268 and overall epoch 21.977420: 
+
+Epoch: 4
+In epoch: 4, data preperation time takes 0.203738, all the batches together take 19.691474 and overall epoch 21.916408: 

@@ -1,0 +1,22 @@
+Processor: Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz
+RAM: 235Gi
+GPU:     Product Name                          : Quadro RTX 8000
+Files already downloaded and verified
+Files already downloaded and verified
+
+Epoch: 0
+/home/vb2184/.local/lib/python3.8/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 16 worker processes in total. Our suggested max number of worker in current system is 8, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+In epoch: 0, data preperation time takes 0.196657, all the batches together take 36.909225 and overall epoch 38.769718: 
+
+Epoch: 1
+In epoch: 1, data preperation time takes 0.204856, all the batches together take 19.655856 and overall epoch 21.799284: 
+
+Epoch: 2
+In epoch: 2, data preperation time takes 0.202195, all the batches together take 19.654959 and overall epoch 21.784801: 
+
+Epoch: 3
+In epoch: 3, data preperation time takes 0.200949, all the batches together take 19.687268 and overall epoch 21.977420: 
+
+Epoch: 4
+In epoch: 4, data preperation time takes 0.203738, all the batches together take 19.691474 and overall epoch 21.916408: 

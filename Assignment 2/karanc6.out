@@ -1,0 +1,91 @@
+Processor: Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz
+RAM: 261Gi
+GPU:     Product Name                          : Tesla V100-PCIE-32GB
+Files already downloaded and verified
+Files already downloaded and verified
+
+Epoch: 0 //SGD
+In epoch: 0, data preperation time takes 0.203709, all the batches together take 36.844409 and overall epoch 38.704437: 
+
+Epoch: 1
+In epoch: 1, data preperation time takes 0.205178, all the batches together take 19.984654 and overall epoch 22.065635: 
+
+Epoch: 2
+In epoch: 2, data preperation time takes 0.205446, all the batches together take 19.992999 and overall epoch 22.175080: 
+
+Epoch: 3
+In epoch: 3, data preperation time takes 0.206023, all the batches together take 19.988679 and overall epoch 22.202347: 
+
+Epoch: 4
+In epoch: 4, data preperation time takes 0.204658, all the batches together take 19.991525 and overall epoch 22.162121: 
+
+Files already downloaded and verified
+Files already downloaded and verified
+
+Epoch: 0 //SGD with Nesterov
+In epoch: 0, data preperation time takes 0.204082, all the batches together take 21.490934 and overall epoch 23.314941: 
+
+Epoch: 1
+In epoch: 1, data preperation time takes 0.207149, all the batches together take 20.089881 and overall epoch 22.159710: 
+
+Epoch: 2
+In epoch: 2, data preperation time takes 0.204391, all the batches together take 20.077062 and overall epoch 22.317522: 
+
+Epoch: 3
+In epoch: 3, data preperation time takes 0.205051, all the batches together take 20.070408 and overall epoch 22.181349: 
+
+Epoch: 4
+In epoch: 4, data preperation time takes 0.204609, all the batches together take 20.065921 and overall epoch 22.394791: 
+
+Files already downloaded and verified
+Files already downloaded and verified
+
+Epoch: 0 //Adagrad
+In epoch: 0, data preperation time takes 0.204165, all the batches together take 21.625062 and overall epoch 23.605054: 
+
+Epoch: 1
+In epoch: 1, data preperation time takes 0.204043, all the batches together take 20.216367 and overall epoch 22.379570: 
+
+Epoch: 2
+In epoch: 2, data preperation time takes 0.206763, all the batches together take 20.229331 and overall epoch 22.465315: 
+
+Epoch: 3
+In epoch: 3, data preperation time takes 0.205944, all the batches together take 20.211048 and overall epoch 22.404924: 
+
+Epoch: 4
+In epoch: 4, data preperation time takes 0.208754, all the batches together take 20.226951 and overall epoch 22.391238: 
+
+Files already downloaded and verified
+Files already downloaded and verified
+
+Epoch: 0 //Adadelta
+In epoch: 0, data preperation time takes 0.205967, all the batches together take 22.024962 and overall epoch 23.943888: 
+
+Epoch: 1
+In epoch: 1, data preperation time takes 0.207094, all the batches together take 20.732802 and overall epoch 22.880841: 
+
+Epoch: 2
+In epoch: 2, data preperation time takes 0.204410, all the batches together take 20.718237 and overall epoch 22.815496: 
+
+Epoch: 3
+In epoch: 3, data preperation time takes 0.204063, all the batches together take 20.739588 and overall epoch 22.832578: 
+
+Epoch: 4
+In epoch: 4, data preperation time takes 0.204570, all the batches together take 20.718658 and overall epoch 22.779059: 
+Files already downloaded and verified
+Files already downloaded and verified
+
+Epoch: 0 //Adam
+In epoch: 0, data preperation time takes 0.203296, all the batches together take 21.765529 and overall epoch 23.755180: 
+
+Epoch: 1
+In epoch: 1, data preperation time takes 0.207649, all the batches together take 20.446354 and overall epoch 22.615429: 
+
+Epoch: 2
+In epoch: 2, data preperation time takes 0.205710, all the batches together take 20.444525 and overall epoch 22.573653: 
+
+Epoch: 3
+In epoch: 3, data preperation time takes 0.206703, all the batches together take 20.464952 and overall epoch 22.501676: 
+
+Epoch: 4
+In epoch: 4, data preperation time takes 0.204260, all the batches together take 20.459302 and overall epoch 22.610261: 

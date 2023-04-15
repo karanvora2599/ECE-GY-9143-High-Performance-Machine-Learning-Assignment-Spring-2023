@@ -1,0 +1,20 @@
+Processor: Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+RAM: 222Gi
+GPU:     Product Name                          : Tesla V100-SXM2-16GB
+Files already downloaded and verified
+Files already downloaded and verified
+
+Epoch: 0
+In epoch: 0, data preperation time takes 0.003676, all the batches together take 297.591739 and overall epoch 298.540447: 
+
+Epoch: 1
+In epoch: 1, data preperation time takes 0.003782, all the batches together take 326.422944 and overall epoch 327.492405: 
+
+Epoch: 2
+In epoch: 2, data preperation time takes 0.003657, all the batches together take 323.133533 and overall epoch 324.137251: 
+
+Epoch: 3
+In epoch: 3, data preperation time takes 0.003645, all the batches together take 324.056394 and overall epoch 325.109964: 
+
+Epoch: 4
+In epoch: 4, data preperation time takes 0.003739, all the batches together take 323.784679 and overall epoch 324.796889: 
