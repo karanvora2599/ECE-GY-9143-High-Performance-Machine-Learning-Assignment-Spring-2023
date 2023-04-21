@@ -1,34 +1,42 @@
 #include <iostream>
+#include <vector>
 #include <chrono>
 
 int main() {
-    const int K = 100; // change K to test different values
+    // Set the value of K (in millions)
+    int K = 1; // Change this value to 1, 5, 10, 50, 100 to profile the program
 
-    // allocate memory for arrays
-    int* array1 = new int[K * 1000000];
-    int* array2 = new int[K * 1000000];
-    int* result = new int[K * 1000000];
+    // Calculate the number of elements in each array
+    int num_elements = K * 1000000;
 
-    // initialize arrays
-    for (int i = 0; i < K * 1000000; i++) {
-        array1[i] = i;
-        array2[i] = i * 2;
+    // Allocate memory for two input arrays and the output array
+    double *array1 = (double *) malloc(num_elements * sizeof(double));
+    double *array2 = (double *) malloc(num_elements * sizeof(double));
+    double *output = (double *) malloc(num_elements * sizeof(double));
+
+    // Initialize the input arrays with some values
+    for (int i = 0; i < num_elements; ++i) {
+        array1[i] = i * 1.0;
+        array2[i] = i * 2.0;
     }
 
-    // add arrays and store result in third array
-    auto start_time = std::chrono::high_resolution_clock::now(); // start timer
-    for (int i = 0; i < K * 1000000; i++) {
-        result[i] = array1[i] + array2[i];
+    // Measure the time taken to add the elements of two arrays
+    auto start = std::chrono::high_resolution_clock::now();
+
+    for (int i = 0; i < num_elements; ++i) {
+        output[i] = array1[i] + array2[i];
     }
-    auto end_time = std::chrono::high_resolution_clock::now(); // end timer
-    auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
 
-    std::cout << "Time elapsed: " << elapsed_time.count() << " ms" << std::endl;
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
 
-    // free memory
-    delete[] array1;
-    delete[] array2;
-    delete[] result;
+    // Print the time taken for the addition operation
+    std::cout << "Time taken for addition with K = " << K << " million elements: " << elapsed.count() << " seconds" << std::endl;
+
+    // Free the memory allocated for the arrays
+    free(array1);
+    free(array2);
+    free(output);
 
     return 0;
 }

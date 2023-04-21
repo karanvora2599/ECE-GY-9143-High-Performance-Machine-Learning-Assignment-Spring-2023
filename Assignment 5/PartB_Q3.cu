@@ -1,71 +1,53 @@
 #include <iostream>
-#include <chrono>
 #include <cuda_runtime.h>
+#include <chrono>
 
-using namespace std;
-using namespace chrono;
-
-__global__ void addArrays(int* A, int* B, int* C, int n) {
-    int i = blockIdx.x * blockDim.x + threadIdx.x;
-    if (i < n) {
-        C[i] = A[i] + B[i];
+__global__ void add_arrays_kernel(double *array1, double *array2, double *output, int num_elements) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if (idx < num_elements) {
+        output[idx] = array1[idx] + array2[idx];
     }
 }
 
 int main() {
-    const int K[] = {1, 5, 10, 50, 100};
-    const int BLOCK_SIZE = 256;
+    int K_values[] = {1, 5, 10, 50, 100};
 
-    for (int k = 0; k < 5; k++) {
-        const int n = K[k] * 1000000;
+    for (int K : K_values) {
+        int num_elements = K * 1000000;
 
-        int* A, *B, *C;
-        cudaMallocManaged(&A, n * sizeof(int));
-        cudaMallocManaged(&B, n * sizeof(int));
-        cudaMallocManaged(&C, n * sizeof(int));
+        double *array1_host, *array2_host, *output_host;
+        cudaMallocManaged(&array1_host, num_elements * sizeof(double));
+        cudaMallocManaged(&array2_host, num_elements * sizeof(double));
+        cudaMallocManaged(&output_host, num_elements * sizeof(double));
 
-        for (int i = 0; i < n; i++) {
-            A[i] = i;
-            B[i] = i;
+        for (int i = 0; i < num_elements; ++i) {
+            array1_host[i] = i * 1.0;
+            array2_host[i] = i * 2.0;
         }
 
-        cudaEvent_t start, stop;
-        cudaEventCreate(&start);
-        cudaEventCreate(&stop);
+        int scenarios[][2] = {
+            {1, 1},
+            {1, 256},
+            {(num_elements + 255) / 256, 256}
+        };
 
-        // Scenario 1: using one block with 1 thread
-        cudaEventRecord(start);
-        addArrays<<<1, 1>>>(A, B, C, n);
-        cudaEventRecord(stop);
-        cudaEventSynchronize(stop);
-        float time1;
-        cudaEventElapsedTime(&time1, start, stop);
+        for (int i = 0; i < 3; ++i) {
+            int num_blocks = scenarios[i][0];
+            int threads_per_block = scenarios[i][1];
 
-        // Scenario 2: using one block with 256 threads
-        cudaEventRecord(start);
-        addArrays<<<1, BLOCK_SIZE>>>(A, B, C, n);
-        cudaEventRecord(stop);
-        cudaEventSynchronize(stop);
-        float time2;
-        cudaEventElapsedTime(&time2, start, stop);
+            auto start = std::chrono::high_resolution_clock::now();
+            add_arrays_kernel<<<num_blocks, threads_per_block>>>(array1_host, array2_host, output_host, num_elements);
+            cudaDeviceSynchronize();
+            auto end = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double> elapsed = end - start;
 
-        // Scenario 3: using multiple blocks with 256 threads per block
-        int numBlocks = (n + BLOCK_SIZE - 1) / BLOCK_SIZE;
-        cudaEventRecord(start);
-        addArrays<<<numBlocks, BLOCK_SIZE>>>(A, B, C, n);
-        cudaEventRecord(stop);
-        cudaEventSynchronize(stop);
-        float time3;
-        cudaEventElapsedTime(&time3, start, stop);
+            std::cout << "Scenario " << i + 1 << " with K = " << K << " million elements: "
+                      << elapsed.count() << " seconds" << std::endl;
+        }
 
-        cout << "K=" << K[k] << endl;
-        cout << "Scenario 1: " << time1 << " ms" << endl;
-        cout << "Scenario 2: " << time2 << " ms" << endl;
-        cout << "Scenario 3: " << time3 << " ms" << endl;
-
-        cudaFree(A);
-        cudaFree(B);
-        cudaFree(C);
+        cudaFree(array1_host);
+        cudaFree(array2_host);
+        cudaFree(output_host);
     }
 
     return 0;
