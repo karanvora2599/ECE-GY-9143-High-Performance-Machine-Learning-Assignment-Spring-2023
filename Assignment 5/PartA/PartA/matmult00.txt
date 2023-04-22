@@ -1,0 +1,10 @@
+Data dimensions: 256x256 
+Grid Dimensions: 16x16 
+Block Dimensions: 16x16 
+Footprint Dimensions: 16x16 
+Time: 0.000036 (sec), nFlops: 33554432, GFlopsS: 932.036347
+Data dimensions: 1024x1024 
+Grid Dimensions: 64x64 
+Block Dimensions: 16x16 
+Footprint Dimensions: 16x16 
+Time: 0.001112 (sec), nFlops: 2147483648, GFlopsS: 1931.217679

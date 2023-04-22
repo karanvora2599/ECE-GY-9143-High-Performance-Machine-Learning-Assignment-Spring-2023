@@ -1,0 +1,5 @@
+Hostname: gv011.hpc.nyu.edu
+Processor: Intel(R) Xeon(R) CPU E5-2698 v4 @ 2.20GHz
+RAM: 280Gi
+rm -f vecadd01 matmult01 *.o
+make: *** No rule to make target 'vecaddKernel01.cu', needed by 'vecaddKernel01.o'.  Stop.

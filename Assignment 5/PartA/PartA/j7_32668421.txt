@@ -1,0 +1,71 @@
+Hostname: gv011.hpc.nyu.edu
+Processor: Intel(R) Xeon(R) CPU E5-2698 v4 @ 2.20GHz
+RAM: 280Gi
+rm -f vecadd00 matmult00 *.o
+/usr/local/cuda/bin/nvcc vecaddKernel00.cu -c -o vecaddKernel00.o -O3 
+/usr/local/cuda/bin/nvcc timer.cu -c -o timer.o -O3 
+/usr/local/cuda/bin/nvcc vecadd.cu vecaddKernel00.o -o vecadd00 -L/usr/local/cuda/lib64 -L/usr/local/cuda/samples/common/lib/linux/x86_64 timer.o -O3 
+vecadd.cu: In function ‘int main(int, char**)’:
+vecadd.cu:95:23: warning: ‘cudaError_t cudaThreadSynchronize()’ is deprecated [-Wdeprecated-declarations]
+     cudaThreadSynchronize();
+                       ^
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1052:46: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void);
+                                              ^~~~~~~~~~~~~~~~~~~~~
+vecadd.cu:95:23: warning: ‘cudaError_t cudaThreadSynchronize()’ is deprecated [-Wdeprecated-declarations]
+     cudaThreadSynchronize();
+                       ^
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1052:46: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void);
+                                              ^~~~~~~~~~~~~~~~~~~~~
+vecadd.cu:105:23: warning: ‘cudaError_t cudaThreadSynchronize()’ is deprecated [-Wdeprecated-declarations]
+     cudaThreadSynchronize();
+                       ^
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1052:46: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void);
+                                              ^~~~~~~~~~~~~~~~~~~~~
+vecadd.cu:105:23: warning: ‘cudaError_t cudaThreadSynchronize()’ is deprecated [-Wdeprecated-declarations]
+     cudaThreadSynchronize();
+                       ^
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1052:46: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void);
+                                              ^~~~~~~~~~~~~~~~~~~~~
+vecadd.cu: In function ‘void Cleanup(bool)’:
+vecadd.cu:160:24: warning: ‘cudaError_t cudaThreadExit()’ is deprecated [-Wdeprecated-declarations]
+     error = cudaThreadExit();
+                        ^
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1026:46: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaThreadExit(void);
+                                              ^~~~~~~~~~~~~~
+vecadd.cu:160:24: warning: ‘cudaError_t cudaThreadExit()’ is deprecated [-Wdeprecated-declarations]
+     error = cudaThreadExit();
+                        ^
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1026:46: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaThreadExit(void);
+                                              ^~~~~~~~~~~~~~
+/usr/local/cuda/bin/nvcc matmult.cu matmultKernel00.o -o matmult00 -L/usr/local/cuda/lib64 -L/usr/local/cuda/samples/common/lib/linux/x86_64 timer.o -O3 
+matmult.cu: In function ‘void MatMul(Matrix, Matrix, Matrix, int)’:
+matmult.cu:48:23: warning: ‘cudaError_t cudaThreadSynchronize()’ is deprecated [-Wdeprecated-declarations]
+   cudaThreadSynchronize();
+                       ^
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1052:46: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void);
+                                              ^~~~~~~~~~~~~~~~~~~~~
+matmult.cu:48:23: warning: ‘cudaError_t cudaThreadSynchronize()’ is deprecated [-Wdeprecated-declarations]
+   cudaThreadSynchronize();
+                       ^
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1052:46: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void);
+                                              ^~~~~~~~~~~~~~~~~~~~~
+matmult.cu:59:23: warning: ‘cudaError_t cudaThreadSynchronize()’ is deprecated [-Wdeprecated-declarations]
+   cudaThreadSynchronize() ;
+                       ^
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1052:46: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void);
+                                              ^~~~~~~~~~~~~~~~~~~~~
+matmult.cu:59:23: warning: ‘cudaError_t cudaThreadSynchronize()’ is deprecated [-Wdeprecated-declarations]
+   cudaThreadSynchronize() ;
+                       ^
+/usr/local/cuda/bin/../targets/x86_64-linux/include/cuda_runtime_api.h:1052:46: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaThreadSynchronize(void);
+                                              ^~~~~~~~~~~~~~~~~~~~~
