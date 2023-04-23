@@ -72,4 +72,3 @@ __global__ void MatMulKernel(Matrix A, Matrix B, Matrix C){
   // Each thread writes its own cell value.
   Csub[thread_row * C.stride + thread_col] = Cvalue;
 }
-
