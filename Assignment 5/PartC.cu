@@ -121,7 +121,7 @@ int main() {
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::milli> duration = end - start;
     cudaMemcpy(O1, d_O, sizeof(double) * K * W * H, cudaMemcpyDeviceToHost);
-    std::cout << "C1_Checksum: " << checksum(O1, K * W * H) << ", C1_Execution_Time: " << std::fixed << std::setprecision(3) << duration.count() << std::endl;
+    std::cout << "C1_Checksum: " << checksum(O1, K * W * H) << ", C1_Execution_Time: " << std::fixed << std::setprecision(3) << duration.count() << " Milliseconds" << std::endl;
 
     // execute tiled convolution kernel
     start = std::chrono::high_resolution_clock::now();
@@ -130,7 +130,7 @@ int main() {
     end = std::chrono::high_resolution_clock::now();
     duration = end - start;
     cudaMemcpy(O2, d_O, sizeof(double) * K * W * H, cudaMemcpyDeviceToHost);
-    std::cout << "C2_Checksum: " << checksum(O2, K * W * H) << ", C2_Execution_Time: " << std::fixed << std::setprecision(3) << duration.count() << std::endl;
+    std::cout << "C2_Checksum: " << checksum(O2, K * W * H) << ", C2_Execution_Time: " << std::fixed << std::setprecision(3) << duration.count() << " Milliseconds" << std::endl;
 
     // execute cuDNN convolution
     cudnnHandle_t handle;
@@ -163,7 +163,7 @@ int main() {
     end = std::chrono::high_resolution_clock::now();
     duration = end - start;
     cudaMemcpy(O1, d_O, sizeof(double) * K * W * H, cudaMemcpyDeviceToHost);
-    std::cout << "C3_Checksum: " << checksum(O1, K * W * H) << ", C3_Execution_Time: " << std::fixed << std::setprecision(3) << duration.count() << std::endl;
+    std::cout << "C3_Checksum: " << checksum(O1, K * W * H) << ", C3_Execution_Time: " << std::fixed << std::setprecision(3) << duration.count() << " Milliseconds" << std::endl;
     // free memory
     delete[] I;
     delete[] F;
