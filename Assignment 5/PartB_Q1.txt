@@ -1,0 +1,5 @@
+Time taken for K = 1: 4548 microseconds
+Time taken for K = 5: 22405 microseconds
+Time taken for K = 10: 75301 microseconds
+Time taken for K = 50: 304022 microseconds
+Time taken for K = 100: 442850 microseconds

@@ -1,0 +1,2 @@
+Checksum: 1.22756e+14
+Kernel execution time: 0.0723188 seconds

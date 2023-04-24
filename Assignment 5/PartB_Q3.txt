@@ -1,0 +1,15 @@
+Scenario 1 with K = 1 million elements: 0.000642511 seconds
+Scenario 2 with K = 1 million elements: 2.0002e-05 seconds
+Scenario 3 with K = 1 million elements: 0.00483572 seconds
+Scenario 1 with K = 5 million elements: 0.000557253 seconds
+Scenario 2 with K = 5 million elements: 2.3349e-05 seconds
+Scenario 3 with K = 5 million elements: 0.0309727 seconds
+Scenario 1 with K = 10 million elements: 0.000525681 seconds
+Scenario 2 with K = 10 million elements: 3.0268e-05 seconds
+Scenario 3 with K = 10 million elements: 0.0508627 seconds
+Scenario 1 with K = 50 million elements: 0.000571403 seconds
+Scenario 2 with K = 50 million elements: 2.3391e-05 seconds
+Scenario 3 with K = 50 million elements: 0.281617 seconds
+Scenario 1 with K = 100 million elements: 0.000571323 seconds
+Scenario 2 with K = 100 million elements: 2.135e-05 seconds
+Scenario 3 with K = 100 million elements: 0.492869 seconds

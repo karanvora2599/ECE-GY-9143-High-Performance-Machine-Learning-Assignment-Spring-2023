@@ -1,53 +1,55 @@
 #include <iostream>
-#include <cuda_runtime.h>
+#include <cstdlib>
 #include <chrono>
+#include <cuda_runtime.h>
 
-__global__ void add_arrays_kernel(double *array1, double *array2, double *output, int num_elements) {
+using namespace std;
+using namespace std::chrono;
+
+__global__ void add_arrays_kernel(int *a, int *b, int *c, int N) {
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
-    if (idx < num_elements) {
-        output[idx] = array1[idx] + array2[idx];
+    if (idx < N) {
+        c[idx] = a[idx] + b[idx];
     }
 }
 
 int main() {
     int K_values[] = {1, 5, 10, 50, 100};
+    int scenarios[][2] = {
+        {1, 1},
+        {1, 256},
+        {0, 256},
+    };
 
     for (int K : K_values) {
-        int num_elements = K * 1000000;
+        int N = K * 1000000;
 
-        double *array1_host, *array2_host, *output_host;
-        cudaMallocManaged(&array1_host, num_elements * sizeof(double));
-        cudaMallocManaged(&array2_host, num_elements * sizeof(double));
-        cudaMallocManaged(&output_host, num_elements * sizeof(double));
+        int *a, *b, *c;
+        cudaMallocManaged((void **)&a, N * sizeof(int));
+        cudaMallocManaged((void **)&b, N * sizeof(int));
+        cudaMallocManaged((void **)&c, N * sizeof(int));
 
-        for (int i = 0; i < num_elements; ++i) {
-            array1_host[i] = i * 1.0;
-            array2_host[i] = i * 2.0;
+        for (int i = 0; i < N; i++) {
+            a[i] = rand() % 100;
+            b[i] = rand() % 100;
         }
 
-        int scenarios[][2] = {
-            {1, 1},
-            {1, 256},
-            {(num_elements + 255) / 256, 256}
-        };
+        for (int i = 0; i < 3; i++) {
+            int blocks = scenarios[i][0] == 0 ? (N + scenarios[i][1] - 1) / scenarios[i][1] : scenarios[i][0];
+            int threads = scenarios[i][1];
 
-        for (int i = 0; i < 3; ++i) {
-            int num_blocks = scenarios[i][0];
-            int threads_per_block = scenarios[i][1];
-
-            auto start = std::chrono::high_resolution_clock::now();
-            add_arrays_kernel<<<num_blocks, threads_per_block>>>(array1_host, array2_host, output_host, num_elements);
+            auto start = high_resolution_clock::now();
+            add_arrays_kernel<<<blocks, threads>>>(a, b, c, N);
             cudaDeviceSynchronize();
-            auto end = std::chrono::high_resolution_clock::now();
-            std::chrono::duration<double> elapsed = end - start;
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start).count();
 
-            std::cout << "Scenario " << i + 1 << " with K = " << K << " million elements: "
-                      << elapsed.count() << " seconds" << std::endl;
+            cout << "Time taken for K = " << K << ", scenario " << i + 1 << ": " << duration << " microseconds" << endl;
         }
 
-        cudaFree(array1_host);
-        cudaFree(array2_host);
-        cudaFree(output_host);
+        cudaFree(a);
+        cudaFree(b);
+        cudaFree(c);
     }
 
     return 0;

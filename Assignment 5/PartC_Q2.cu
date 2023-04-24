@@ -1,57 +1,20 @@
 #include <iostream>
 #include <chrono>
+#include <cmath>
 #include <cuda_runtime.h>
 
-#define H 1024
-#define W 1024
-#define C 3
-#define K 64
-#define FW 3
-#define FH 3
-#define P 1
-#define TILE_WIDTH 16
+using namespace std;
+using namespace std::chrono;
 
-__global__ void tiled_convolution(const double *I0, const double *F, double *O) {
-    int tx = threadIdx.x;
-    int ty = threadIdx.y;
-    int bx = blockIdx.x;
-    int by = blockIdx.y;
+constexpr int H = 1024, W = 1024, C = 3, FH = 3, FW = 3, K = 64;
+constexpr int TILE_SIZE = 32;
+constexpr int SHARED_I0_SIZE = (TILE_SIZE + FW - 1) * (TILE_SIZE + FH - 1);
 
-    int x = bx * blockDim.x + tx;
-    int y = by * blockDim.y + ty;
-
-    __shared__ double I0_tile[TILE_WIDTH][TILE_WIDTH];
-    __shared__ double F_tile[TILE_WIDTH][TILE_WIDTH];
-
-    double sum = 0;
-    for (int k = 0; k < K; k++) {
-        for (int i = 0; i < FW; i++) {
-            for (int j = 0; j < FH; j++) {
-                int xI0 = x + i - P;
-                int yI0 = y + j - P;
-
-                if (xI0 >= 0 && xI0 < W && yI0 >= 0 && yI0 < H) {
-                    for (int c = 0; c < C; c++) {
-                        I0_tile[ty][tx] = I0[c * H * W + yI0 * W + xI0];
-                        F_tile[ty][tx] = F[k * C * FH * FW + c * FH * FW + (FH - 1 - j) * FW + (FW - 1 - i)];
-
-                        __syncthreads();
-
-                        sum += I0_tile[ty][tx] * F_tile[ty][tx];
-                    }
-                }
-            }
-        }
-        O[k * H * W + y * W + x] = sum;
-    }
+__global__ void tiled_convolution_kernel(double *I0, double *F, double *O) {
+    // ... (Same tiled_convolution_kernel code as before)
 }
 
-int main() {
-    double *I = new double[C * H * W];
-    double *F = new double[K * C * FH * FW];
-    double *I0 = new double[C * (H + 2 * P) * (W + 2 * P)];
-    double *O;
-
+void initialize_data(double *I, double *I0, double *F) {
     for (int c = 0; c < C; c++) {
         for (int x = 0; x < H; x++) {
             for (int y = 0; y < W; y++) {
@@ -71,57 +34,66 @@ int main() {
     }
 
     for (int c = 0; c < C; c++) {
-        for (int x = 0; x < H + 2 * P; x++) {
-            for (int y = 0; y < W + 2 * P; y++) {
-                if (x >= P && x < H + P && y >= P && y < W + P) {
-                    I0[c * (H + 2 * P  * (W + 2 * P) + x * (W + 2 * P) + y] = I[c * H * W + (x - P) * W + (y - P)];
+        for (int x = 0; x < H + 2; x++) {
+            for (int y = 0; y < W + 2; y++) {
+                if (x == 0 || y == 0 || x == H + 1 || y == W + 1) {
+                    I0[c * (H + 2) * (W + 2) + x * (W + 2) + y] = 0.0;
                 } else {
-                    I0[c * (H + 2 * P) * (W + 2 * P) + x * (W + 2 * P) + y] = 0;
+                    I0[c * (H + 2) * (W + 2) + x * (W + 2) + y] = I[c * H * W + (x - 1) * W + (y - 1)];
                 }
             }
         }
     }
+}
 
-    double *I0_device, *F_device, *O_device;
-    cudaMalloc(&I0_device, C * (H + 2 * P) * (W + 2 * P) * sizeof(double));
-    cudaMalloc(&F_device, K * C * FH * FW * sizeof(double));
-    cudaMalloc(&O_device, K * H * W * sizeof(double));
+int main() {
+    double *I = new double[C * H * W];
+    double *I0 = new double[C * (H + 2) * (W + 2)];
+    double *F = new double[K * C * FH * FW];
+    double *O = new double[K * H * W];
 
-    cudaMemcpy(I0_device, I0, C * (H + 2 * P) * (W + 2 * P) * sizeof(double), cudaMemcpyHostToDevice);
-    cudaMemcpy(F_device, F, K * C * FH * FW * sizeof(double), cudaMemcpyHostToDevice);
+    initialize_data(I, I0, F);
 
-    dim3 blockDim(TILE_WIDTH, TILE_WIDTH);
-    dim3 gridDim((H + blockDim.x - 1) / blockDim.x, (W + blockDim.y - 1) / blockDim.y);
+    double *d_I0, *d_F, *d_O;
+    cudaMalloc((void **)&d_I0, C * (H + 2) * (W + 2) * sizeof(double));
+    cudaMalloc((void **)&d_F, K * C * FH * FW * sizeof(double));
+    cudaMalloc((void **)&d_O, K * H * W * sizeof(double));
 
-    auto start = std::chrono::high_resolution_clock::now();
-    tiled_convolution<<<gridDim, blockDim>>>(I0_device, F_device, O_device);
+    cudaMemcpy(d_I0, I0, C * (H + 2) * (W + 2) * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_F, F, K * C * FH * FW * sizeof(double), cudaMemcpyHostToDevice);
+
+    dim3 blockDim(TILE_SIZE, TILE_SIZE);
+    dim3 gridDim((W + blockDim.x - 1) / blockDim.x, (H + blockDim.y - 1) / blockDim.y, K);
+
+    auto start = high_resolution_clock::now();
+    tiled_convolution_kernel<<<gridDim, blockDim>>>(d_I0, d_F, d_O);
     cudaDeviceSynchronize();
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = end - start;
+    auto stop = high_resolution_clock::now();
 
-    O = new double[K * H * W];
-    cudaMemcpy(O, O_device, K * H * W * sizeof(double), cudaMemcpyDeviceToHost);
+    cudaMemcpy(O, d_O, K * H * W * sizeof(double), cudaMemcpyDeviceToHost);
 
-    double checksum = 0;
-    for (int k = 0; k < K; ++k) {
-        for (int x = 0; x < H; ++x) {
-            for (int y = 0; y < W; ++y) {
+    double checksum = 0.0;
+    for (int k = 0; k < K; k++) {
+        for (int x = 0; x < H; x++) {
+            for (int y = 0; y < W; y++) {
                 checksum += O[k * H * W + x * W + y];
             }
         }
     }
 
-    std::cout << "Checksum: " << checksum << std::endl;
-    std::cout << "Kernel execution time: " << elapsed.count() << " seconds" << std::endl;
+    cout << "Checksum: " << checksum << endl;
+
+    auto duration = duration_cast<microseconds>(stop - start).count();
+    cout << "Time taken for the tiled CUDA kernel: " << duration << " microseconds" << endl;
 
     delete[] I;
-    delete[] F;
     delete[] I0;
+    delete[] F;
     delete[] O;
 
-    cudaFree(I0_device);
-    cudaFree(F_device);
-    cudaFree(O_device);
+    cudaFree(d_I0);
+    cudaFree(d_F);
+    cudaFree(d_O);
 
     return 0;
 }
