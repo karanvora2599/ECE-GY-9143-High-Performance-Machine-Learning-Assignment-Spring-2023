@@ -115,6 +115,7 @@ int main() {
     cudaMemcpy(d_I, I, sizeof(double) * C * (W + 2 * P) * (H + 2 * P), cudaMemcpyHostToDevice);
     cudaMemcpy(d_F, F, sizeof(double) * K * C * FH * FW, cudaMemcpyHostToDevice);
 
+    //Execute simple Convolution
     auto start = std::chrono::high_resolution_clock::now();
     simpleConvolution<<<dim3(K, (W + 15) / 16, (H + 15) / 16), dim3(16, 16, 1)>>>(d_I, d_F, d_O);
     cudaDeviceSynchronize();
