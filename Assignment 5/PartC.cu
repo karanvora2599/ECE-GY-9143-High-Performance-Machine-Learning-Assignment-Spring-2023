@@ -76,7 +76,7 @@ __global__ void tiledConvolution(double* I, double* F, double* O) {
                 }
             }
         }
-        O[k * W * H + (x0 + tx) * H + (y0 + ty)] = sum;
+        O[k * W * H + (x0 + tx) * H + y0 + ty] = sum;
     }
 }
 
