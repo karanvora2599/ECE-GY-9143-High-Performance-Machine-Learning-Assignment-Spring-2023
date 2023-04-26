@@ -1,0 +1,61 @@
+running all commands for CUDA_A
+running ./vecadd00 500
+Total vector size: 3840000
+Time: 0.003123 (sec), GFlopsS: 1.229569, GBytesS: 14.754831
+Test PASSED 
+running ./vecadd00 1000
+Total vector size: 7680000
+Time: 0.006414 (sec), GFlopsS: 1.197393, GBytesS: 14.368711
+Test PASSED 
+running ./vecadd00 2000
+Total vector size: 15360000
+Time: 0.012985 (sec), GFlopsS: 1.182904, GBytesS: 14.194850
+Test PASSED 
+running ./vecadd01 500
+Total vector size: 3840000
+Time: 0.000602 (sec), GFlopsS: 6.378664, GBytesS: 76.543972
+Test PASSED 
+running ./vecadd01 1000
+Total vector size: 7680000
+Time: 0.001188 (sec), GFlopsS: 6.464430, GBytesS: 77.573160
+Test PASSED 
+running ./vecadd01 2000
+Total vector size: 15360000
+Time: 0.002349 (sec), GFlopsS: 6.538568, GBytesS: 78.462815
+Test PASSED 
+running ./matmult00 16
+Data dimensions: 256x256 
+Grid Dimensions: 16x16 
+Block Dimensions: 16x16 
+Footprint Dimensions: 16x16 
+Time: 0.000129 (sec), nFlops: 33554432, GFlopsS: 260.143232
+running ./matmult00 32
+Data dimensions: 512x512 
+Grid Dimensions: 32x32 
+Block Dimensions: 16x16 
+Footprint Dimensions: 16x16 
+Time: 0.000803 (sec), nFlops: 268435456, GFlopsS: 334.293322
+running ./matmult00 64
+Data dimensions: 1024x1024 
+Grid Dimensions: 64x64 
+Block Dimensions: 16x16 
+Footprint Dimensions: 16x16 
+Time: 0.005903 (sec), nFlops: 2147483648, GFlopsS: 363.794954
+running ./matmult01 8
+Data dimensions: 256x256 
+Grid Dimensions: 8x8 
+Block Dimensions: 16x16 
+Footprint Dimensions: 32x32 
+Time: 0.000096 (sec), nFlops: 33554432, GFlopsS: 349.224537
+running ./matmult01 16
+Data dimensions: 512x512 
+Grid Dimensions: 16x16 
+Block Dimensions: 16x16 
+Footprint Dimensions: 32x32 
+Time: 0.000396 (sec), nFlops: 268435456, GFlopsS: 677.844616
+running ./matmult01 32
+Data dimensions: 1024x1024 
+Grid Dimensions: 32x32 
+Block Dimensions: 16x16 
+Footprint Dimensions: 32x32 
+Time: 0.002813 (sec), nFlops: 2147483648, GFlopsS: 763.451369
