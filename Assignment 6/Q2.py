@@ -107,12 +107,15 @@ def train(rank, world_size, model, batch_size, epochs):
     for epoch in range(epochs):
         epoch_start_time = time.time()
         epoch_loss = 0.0
-        epoch_accuracy = 0.0
+        epoch_accuracy = 0.0        
+        comm_time = 0.0
         for inputs, labels in train_loader:
             inputs, labels = inputs.to(device), labels.to(device)
 
             optimizer.zero_grad()
+            start_comm = time.time()
             outputs = model(inputs)
+            comm_time += time.time() - start_comm
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
@@ -124,17 +127,19 @@ def train(rank, world_size, model, batch_size, epochs):
         epoch_accuracy /= len(train_loader)
         epoch_time = time.time() - epoch_start_time
 
-        print(f"Epoch {epoch + 1}: Loss {epoch_loss:.4f}, Accuracy {epoch_accuracy:.4f}%")
-        print(f"Batch size: {batch_size}, Training time for epoch: {epoch_time:.4f} seconds")
+        print(f"Epoch {epoch + 1}: Loss {epoch_loss:.4f}, Accuracy {epoch_accuracy:.2f}%")
+        print(f"Batch size: {batch_size}, Training time for epoch: {epoch_time:.2f} seconds")
+        print(f"Batch size: {batch_size}, Communication time for epoch: {comm_time:.4f} seconds")
 
 
 def main(gpu_count, model, batch_size=100, epochs=10):
     os.environ['MASTER_ADDR'] = 'localhost'
     os.environ['MASTER_PORT'] = '12355'
-
-    world_size = gpu_count
-    mp.spawn(train, args=(world_size, model, batch_size, epochs), nprocs=world_size, join=True)
-        
+    
+    for gpu_count in gpu_counts:        
+        print(f"\nRunning with {gpu_count} GPUs")
+        world_size = gpu_count
+        mp.spawn(train, args=(world_size, model, batch_size, epochs), nprocs=world_size, join=True)
 
 transform = transforms.Compose([
     transforms.RandomHorizontalFlip(),
@@ -151,6 +156,7 @@ if __name__ == "__main__":
     epochs = 2
 
     batch_sizes = [32, 128, 512]
+    gpu_counts = [1, 2, 4]
     for batch_size in batch_sizes:
         try:
             main(gpu_count, model, batch_size, epochs)
