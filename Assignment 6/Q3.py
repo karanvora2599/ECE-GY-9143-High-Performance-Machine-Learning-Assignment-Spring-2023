@@ -78,7 +78,7 @@ def accuracy(output, target):
         correct = pred.eq(target.view(1, -1).expand_as(pred)).view(-1).float().sum(0, keepdim=True)
         return correct.mul_(100.0 / batch_size).item()
 
-def train(rank, world_size, model, batch_size, epochs):
+def train(rank, world_size, model, batch_size, epochs, total_data_transferred):
     torch.manual_seed(0)
     device = torch.device(f'cuda:{rank}')
     
@@ -133,6 +133,8 @@ def train(rank, world_size, model, batch_size, epochs):
         print(f"Epoch {epoch + 1}: Loss {epoch_loss:.4f}, Accuracy {epoch_accuracy:.2f}%")
         print(f"Batch size: {batch_size}, Training time for epoch: {epoch_time:.2f} seconds")
         print(f"Batch size: {batch_size}, Communication time for epoch: {comm_time:.4f} seconds")
+        bandwidth_utilization = total_data_transferred / comm_time
+        print(f"Bandwidth utilization for {world_size} GPUs and batch size {batch_size}: {bandwidth_utilization/1e6:.2f} MB/sec")
 
 
 def main(gpu_count, model, batch_size=100, epochs=10):
@@ -146,13 +148,7 @@ def main(gpu_count, model, batch_size=100, epochs=10):
     for gpu_count in gpu_counts:        
         print(f"\nRunning with {gpu_count} GPUs")
         world_size = gpu_count
-        mp.spawn(train, args=(world_size, model, batch_size, epochs), nprocs=world_size, join=True)
-        
-        # Make sure to replace `comm_time` with the actual communication time obtained from your experiment.
-        comm_time = 1 # Placeholder value, replace with the actual value from the output.
-        
-        bandwidth_utilization = total_data_transferred / comm_time
-        print(f"Bandwidth utilization for {gpu_count} GPUs and batch size {batch_size}: {bandwidth_utilization/1e6:.2f} MB/sec")
+        mp.spawn(train, args=(world_size, model, batch_size, epochs, total_data_transferred), nprocs=world_size, join=True)
 
 transform = transforms.Compose([
     transforms.RandomHorizontalFlip(),
