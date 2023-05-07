@@ -1,0 +1,510 @@
+Processor: Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz
+RAM: 318Gi
+GPU:     Product Name                          : Quadro RTX 8000
+    Product Name                          : Quadro RTX 8000
+    Product Name                          : Quadro RTX 8000
+    Product Name                          : Quadro RTX 8000
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: typing-extensions in /home/kv2154/.local/lib/python3.8/site-packages (4.5.0)
+WARNING: You are using pip version 20.2.3; however, version 23.1.2 is available.
+You should consider upgrading via the '/share/apps/python/3.8.6/intel/bin/python -m pip install --upgrade pip' command.
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: sympy in /home/kv2154/.local/lib/python3.8/site-packages (1.11.1)
+Requirement already satisfied: mpmath>=0.19 in /home/kv2154/.local/lib/python3.8/site-packages (from sympy) (1.3.0)
+WARNING: You are using pip version 20.2.3; however, version 23.1.2 is available.
+You should consider upgrading via the '/share/apps/python/3.8.6/intel/bin/python -m pip install --upgrade pip' command.
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: torch in /home/kv2154/.local/lib/python3.8/site-packages (2.0.0)
+Requirement already satisfied: torchvision in /home/kv2154/.local/lib/python3.8/site-packages (0.15.1)
+Requirement already satisfied: filelock in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from torch) (3.0.12)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu11==11.7.99; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (11.7.99)
+Requirement already satisfied: nvidia-curand-cu11==10.2.10.91; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (10.2.10.91)
+Requirement already satisfied: sympy in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (1.11.1)
+Requirement already satisfied: nvidia-cuda-runtime-cu11==11.7.99; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (11.7.99)
+Requirement already satisfied: nvidia-cusparse-cu11==11.7.4.91; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (11.7.4.91)
+Requirement already satisfied: nvidia-cuda-cupti-cu11==11.7.101; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (11.7.101)
+Requirement already satisfied: nvidia-nvtx-cu11==11.7.91; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (11.7.91)
+Requirement already satisfied: nvidia-cublas-cu11==11.10.3.66; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (11.10.3.66)
+Requirement already satisfied: nvidia-cufft-cu11==10.9.0.58; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (10.9.0.58)
+Requirement already satisfied: nvidia-nccl-cu11==2.14.3; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (2.14.3)
+Requirement already satisfied: triton==2.0.0; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (2.0.0)
+Requirement already satisfied: typing-extensions in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (4.5.0)
+Requirement already satisfied: jinja2 in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from torch) (2.11.2)
+Requirement already satisfied: networkx in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (3.1)
+Requirement already satisfied: nvidia-cudnn-cu11==8.5.0.96; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (8.5.0.96)
+Requirement already satisfied: nvidia-cusolver-cu11==11.4.0.1; platform_system == "Linux" and platform_machine == "x86_64" in /home/kv2154/.local/lib/python3.8/site-packages (from torch) (11.4.0.1)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from torchvision) (8.0.1)
+Requirement already satisfied: numpy in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages/numpy-1.19.2-py3.8-linux-x86_64.egg (from torchvision) (1.19.2)
+Requirement already satisfied: requests in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from torchvision) (2.24.0)
+Requirement already satisfied: setuptools in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from nvidia-curand-cu11==10.2.10.91; platform_system == "Linux" and platform_machine == "x86_64"->torch) (49.2.1)
+Requirement already satisfied: wheel in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from nvidia-curand-cu11==10.2.10.91; platform_system == "Linux" and platform_machine == "x86_64"->torch) (0.35.1)
+Requirement already satisfied: mpmath>=0.19 in /home/kv2154/.local/lib/python3.8/site-packages (from sympy->torch) (1.3.0)
+Requirement already satisfied: lit in /home/kv2154/.local/lib/python3.8/site-packages (from triton==2.0.0; platform_system == "Linux" and platform_machine == "x86_64"->torch) (16.0.2)
+Requirement already satisfied: cmake in /home/kv2154/.local/lib/python3.8/site-packages (from triton==2.0.0; platform_system == "Linux" and platform_machine == "x86_64"->torch) (3.26.3)
+Requirement already satisfied: MarkupSafe>=0.23 in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from jinja2->torch) (1.1.1)
+Requirement already satisfied: chardet<4,>=3.0.2 in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from requests->torchvision) (3.0.4)
+Requirement already satisfied: idna<3,>=2.5 in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from requests->torchvision) (2.10)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from requests->torchvision) (1.25.10)
+Requirement already satisfied: certifi>=2017.4.17 in /share/apps/python/3.8.6/intel/lib/python3.8/site-packages (from requests->torchvision) (2020.6.20)
+WARNING: You are using pip version 20.2.3; however, version 23.1.2 is available.
+You should consider upgrading via the '/share/apps/python/3.8.6/intel/bin/python -m pip install --upgrade pip' command.
+Files already downloaded and verified
+
+Running with 1 GPUs
+Files already downloaded and verified
+Epoch 1: Loss 1.5242, Accuracy 44.70%
+Batch size: 32, Training time for epoch: 65.84 seconds
+Batch size: 32, Communication time for epoch: 26.5445 seconds
+Bandwidth utilization for 1 GPUs and batch size 32: 1.68 MB/sec
+Epoch 2: Loss 1.0069, Accuracy 64.48%
+Batch size: 32, Training time for epoch: 43.38 seconds
+Batch size: 32, Communication time for epoch: 5.9958 seconds
+Bandwidth utilization for 1 GPUs and batch size 32: 7.45 MB/sec
+Epoch 3: Loss 0.7779, Accuracy 72.69%
+Batch size: 32, Training time for epoch: 44.07 seconds
+Batch size: 32, Communication time for epoch: 6.0214 seconds
+Bandwidth utilization for 1 GPUs and batch size 32: 7.42 MB/sec
+Epoch 4: Loss 0.6453, Accuracy 77.74%
+Batch size: 32, Training time for epoch: 44.08 seconds
+Batch size: 32, Communication time for epoch: 6.0179 seconds
+Bandwidth utilization for 1 GPUs and batch size 32: 7.43 MB/sec
+Epoch 5: Loss 0.5563, Accuracy 80.73%
+Batch size: 32, Training time for epoch: 44.04 seconds
+Batch size: 32, Communication time for epoch: 6.0103 seconds
+Bandwidth utilization for 1 GPUs and batch size 32: 7.44 MB/sec
+
+Running with 2 GPUs
+Files already downloaded and verified
+Epoch 1: Loss 1.4453, Accuracy 47.59%
+Batch size: 32, Training time for epoch: 25.37 seconds
+Batch size: 32, Communication time for epoch: 4.5188 seconds
+Bandwidth utilization for 2 GPUs and batch size 32: 9.89 MB/sec
+Epoch 2: Loss 0.9175, Accuracy 67.90%
+Batch size: 32, Training time for epoch: 23.80 seconds
+Batch size: 32, Communication time for epoch: 3.0626 seconds
+Bandwidth utilization for 2 GPUs and batch size 32: 14.59 MB/sec
+Epoch 3: Loss 0.7174, Accuracy 75.00%
+Batch size: 32, Training time for epoch: 23.79 seconds
+Batch size: 32, Communication time for epoch: 3.0440 seconds
+Bandwidth utilization for 2 GPUs and batch size 32: 14.68 MB/sec
+Epoch 4: Loss 0.6004, Accuracy 79.16%
+Batch size: 32, Training time for epoch: 23.91 seconds
+Batch size: 32, Communication time for epoch: 3.0782 seconds
+Bandwidth utilization for 2 GPUs and batch size 32: 14.52 MB/sec
+Epoch 5: Loss 0.5300, Accuracy 81.79%
+Batch size: 32, Training time for epoch: 23.92 seconds
+Batch size: 32, Communication time for epoch: 3.0456 seconds
+Bandwidth utilization for 2 GPUs and batch size 32: 14.68 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.4597, Accuracy 47.41%
+Batch size: 32, Training time for epoch: 25.37 seconds
+Batch size: 32, Communication time for epoch: 4.5528 seconds
+Bandwidth utilization for 2 GPUs and batch size 32: 9.82 MB/sec
+Epoch 2: Loss 0.9315, Accuracy 67.28%
+Batch size: 32, Training time for epoch: 23.80 seconds
+Batch size: 32, Communication time for epoch: 3.0678 seconds
+Bandwidth utilization for 2 GPUs and batch size 32: 14.57 MB/sec
+Epoch 3: Loss 0.7273, Accuracy 74.74%
+Batch size: 32, Training time for epoch: 23.79 seconds
+Batch size: 32, Communication time for epoch: 3.1035 seconds
+Bandwidth utilization for 2 GPUs and batch size 32: 14.40 MB/sec
+Epoch 4: Loss 0.6126, Accuracy 78.82%
+Batch size: 32, Training time for epoch: 23.91 seconds
+Batch size: 32, Communication time for epoch: 3.0605 seconds
+Bandwidth utilization for 2 GPUs and batch size 32: 14.60 MB/sec
+Epoch 5: Loss 0.5273, Accuracy 81.88%
+Batch size: 32, Training time for epoch: 23.92 seconds
+Batch size: 32, Communication time for epoch: 3.0594 seconds
+Bandwidth utilization for 2 GPUs and batch size 32: 14.61 MB/sec
+
+Running with 4 GPUs
+Files already downloaded and verified
+Epoch 1: Loss 1.4762, Accuracy 46.02%
+Batch size: 32, Training time for epoch: 13.84 seconds
+Batch size: 32, Communication time for epoch: 3.1156 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 14.35 MB/sec
+Epoch 2: Loss 0.9595, Accuracy 66.33%
+Batch size: 32, Training time for epoch: 12.25 seconds
+Batch size: 32, Communication time for epoch: 1.5495 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.85 MB/sec
+Epoch 3: Loss 0.7250, Accuracy 74.60%
+Batch size: 32, Training time for epoch: 12.24 seconds
+Batch size: 32, Communication time for epoch: 1.5486 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.86 MB/sec
+Epoch 4: Loss 0.6160, Accuracy 78.71%
+Batch size: 32, Training time for epoch: 12.24 seconds
+Batch size: 32, Communication time for epoch: 1.5491 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.85 MB/sec
+Epoch 5: Loss 0.5379, Accuracy 81.72%
+Batch size: 32, Training time for epoch: 12.26 seconds
+Batch size: 32, Communication time for epoch: 1.5485 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.86 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.4706, Accuracy 46.29%
+Batch size: 32, Training time for epoch: 13.82 seconds
+Batch size: 32, Communication time for epoch: 3.0618 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 14.60 MB/sec
+Epoch 2: Loss 0.9621, Accuracy 66.08%
+Batch size: 32, Training time for epoch: 12.25 seconds
+Batch size: 32, Communication time for epoch: 1.5476 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.88 MB/sec
+Epoch 3: Loss 0.7318, Accuracy 74.62%
+Batch size: 32, Training time for epoch: 12.24 seconds
+Batch size: 32, Communication time for epoch: 1.5373 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 29.07 MB/sec
+Epoch 4: Loss 0.6063, Accuracy 78.85%
+Batch size: 32, Training time for epoch: 12.24 seconds
+Batch size: 32, Communication time for epoch: 1.5476 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.88 MB/sec
+Epoch 5: Loss 0.5387, Accuracy 81.26%
+Batch size: 32, Training time for epoch: 12.26 seconds
+Batch size: 32, Communication time for epoch: 1.5363 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 29.09 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.4708, Accuracy 46.44%
+Batch size: 32, Training time for epoch: 13.82 seconds
+Batch size: 32, Communication time for epoch: 3.0891 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 14.47 MB/sec
+Epoch 2: Loss 0.9514, Accuracy 66.32%
+Batch size: 32, Training time for epoch: 12.25 seconds
+Batch size: 32, Communication time for epoch: 1.6526 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 27.05 MB/sec
+Epoch 3: Loss 0.7327, Accuracy 74.31%
+Batch size: 32, Training time for epoch: 12.24 seconds
+Batch size: 32, Communication time for epoch: 1.5678 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.51 MB/sec
+Epoch 4: Loss 0.6199, Accuracy 78.47%
+Batch size: 32, Training time for epoch: 12.24 seconds
+Batch size: 32, Communication time for epoch: 1.5687 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.49 MB/sec
+Epoch 5: Loss 0.5428, Accuracy 81.16%
+Batch size: 32, Training time for epoch: 12.26 seconds
+Batch size: 32, Communication time for epoch: 1.5662 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.54 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.4413, Accuracy 47.12%
+Batch size: 32, Training time for epoch: 13.82 seconds
+Batch size: 32, Communication time for epoch: 3.1302 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 14.28 MB/sec
+Epoch 2: Loss 0.9363, Accuracy 66.70%
+Batch size: 32, Training time for epoch: 12.25 seconds
+Batch size: 32, Communication time for epoch: 1.5666 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.53 MB/sec
+Epoch 3: Loss 0.7234, Accuracy 74.57%
+Batch size: 32, Training time for epoch: 12.24 seconds
+Batch size: 32, Communication time for epoch: 1.5651 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.56 MB/sec
+Epoch 4: Loss 0.5969, Accuracy 79.40%
+Batch size: 32, Training time for epoch: 12.24 seconds
+Batch size: 32, Communication time for epoch: 1.5624 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.61 MB/sec
+Epoch 5: Loss 0.5317, Accuracy 81.39%
+Batch size: 32, Training time for epoch: 12.26 seconds
+Batch size: 32, Communication time for epoch: 1.5632 seconds
+Bandwidth utilization for 4 GPUs and batch size 32: 28.59 MB/sec
+
+Running with 1 GPUs
+Files already downloaded and verified
+Epoch 1: Loss 1.4528, Accuracy 46.82%
+Batch size: 128, Training time for epoch: 38.45 seconds
+Batch size: 128, Communication time for epoch: 2.8414 seconds
+Bandwidth utilization for 1 GPUs and batch size 128: 15.73 MB/sec
+Epoch 2: Loss 0.9496, Accuracy 66.35%
+Batch size: 128, Training time for epoch: 36.95 seconds
+Batch size: 128, Communication time for epoch: 1.4789 seconds
+Bandwidth utilization for 1 GPUs and batch size 128: 30.22 MB/sec
+Epoch 3: Loss 0.7068, Accuracy 75.21%
+Batch size: 128, Training time for epoch: 36.95 seconds
+Batch size: 128, Communication time for epoch: 1.4789 seconds
+Bandwidth utilization for 1 GPUs and batch size 128: 30.22 MB/sec
+Epoch 4: Loss 0.5888, Accuracy 79.49%
+Batch size: 128, Training time for epoch: 36.98 seconds
+Batch size: 128, Communication time for epoch: 1.4791 seconds
+Bandwidth utilization for 1 GPUs and batch size 128: 30.22 MB/sec
+Epoch 5: Loss 0.5143, Accuracy 82.22%
+Batch size: 128, Training time for epoch: 36.97 seconds
+Batch size: 128, Communication time for epoch: 1.4798 seconds
+Bandwidth utilization for 1 GPUs and batch size 128: 30.20 MB/sec
+
+Running with 2 GPUs
+Files already downloaded and verified
+Epoch 1: Loss 1.4942, Accuracy 45.00%
+Batch size: 128, Training time for epoch: 20.69 seconds
+Batch size: 128, Communication time for epoch: 2.1769 seconds
+Bandwidth utilization for 2 GPUs and batch size 128: 20.53 MB/sec
+Epoch 2: Loss 1.0098, Accuracy 63.81%
+Batch size: 128, Training time for epoch: 19.18 seconds
+Batch size: 128, Communication time for epoch: 0.7666 seconds
+Bandwidth utilization for 2 GPUs and batch size 128: 58.30 MB/sec
+Epoch 3: Loss 0.7735, Accuracy 72.77%
+Batch size: 128, Training time for epoch: 19.19 seconds
+Batch size: 128, Communication time for epoch: 0.7678 seconds
+Bandwidth utilization for 2 GPUs and batch size 128: 58.21 MB/sec
+Epoch 4: Loss 0.6381, Accuracy 77.36%
+Batch size: 128, Training time for epoch: 19.14 seconds
+Batch size: 128, Communication time for epoch: 0.7717 seconds
+Bandwidth utilization for 2 GPUs and batch size 128: 57.92 MB/sec
+Epoch 5: Loss 0.5549, Accuracy 80.67%
+Batch size: 128, Training time for epoch: 19.18 seconds
+Batch size: 128, Communication time for epoch: 0.7709 seconds
+Bandwidth utilization for 2 GPUs and batch size 128: 57.98 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.4860, Accuracy 45.06%
+Batch size: 128, Training time for epoch: 20.69 seconds
+Batch size: 128, Communication time for epoch: 2.1752 seconds
+Bandwidth utilization for 2 GPUs and batch size 128: 20.55 MB/sec
+Epoch 2: Loss 0.9942, Accuracy 64.65%
+Batch size: 128, Training time for epoch: 19.18 seconds
+Batch size: 128, Communication time for epoch: 0.7522 seconds
+Bandwidth utilization for 2 GPUs and batch size 128: 59.42 MB/sec
+Epoch 3: Loss 0.7576, Accuracy 73.33%
+Batch size: 128, Training time for epoch: 19.19 seconds
+Batch size: 128, Communication time for epoch: 0.7590 seconds
+Bandwidth utilization for 2 GPUs and batch size 128: 58.89 MB/sec
+Epoch 4: Loss 0.6242, Accuracy 78.25%
+Batch size: 128, Training time for epoch: 19.14 seconds
+Batch size: 128, Communication time for epoch: 0.7601 seconds
+Bandwidth utilization for 2 GPUs and batch size 128: 58.80 MB/sec
+Epoch 5: Loss 0.5463, Accuracy 80.89%
+Batch size: 128, Training time for epoch: 19.18 seconds
+Batch size: 128, Communication time for epoch: 0.7591 seconds
+Bandwidth utilization for 2 GPUs and batch size 128: 58.88 MB/sec
+
+Running with 4 GPUs
+Files already downloaded and verified
+Epoch 1: Loss 1.5868, Accuracy 41.41%
+Batch size: 128, Training time for epoch: 11.36 seconds
+Batch size: 128, Communication time for epoch: 1.8155 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 24.62 MB/sec
+Epoch 2: Loss 1.0815, Accuracy 60.86%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3981 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.26 MB/sec
+Epoch 3: Loss 0.8430, Accuracy 69.85%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3981 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.26 MB/sec
+Epoch 4: Loss 0.6975, Accuracy 75.75%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3979 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.34 MB/sec
+Epoch 5: Loss 0.6037, Accuracy 78.85%
+Batch size: 128, Training time for epoch: 9.79 seconds
+Batch size: 128, Communication time for epoch: 0.3984 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.20 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.6081, Accuracy 40.31%
+Batch size: 128, Training time for epoch: 11.36 seconds
+Batch size: 128, Communication time for epoch: 1.9041 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 23.47 MB/sec
+Epoch 2: Loss 1.1137, Accuracy 60.02%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3979 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.33 MB/sec
+Epoch 3: Loss 0.8734, Accuracy 68.88%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3976 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.41 MB/sec
+Epoch 4: Loss 0.7224, Accuracy 74.46%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3971 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.56 MB/sec
+Epoch 5: Loss 0.6225, Accuracy 78.64%
+Batch size: 128, Training time for epoch: 9.79 seconds
+Batch size: 128, Communication time for epoch: 0.3975 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.44 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.6030, Accuracy 41.11%
+Batch size: 128, Training time for epoch: 11.36 seconds
+Batch size: 128, Communication time for epoch: 1.8293 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 24.43 MB/sec
+Epoch 2: Loss 1.1133, Accuracy 59.99%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3984 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.20 MB/sec
+Epoch 3: Loss 0.8657, Accuracy 69.77%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3983 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.21 MB/sec
+Epoch 4: Loss 0.7204, Accuracy 74.64%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3981 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.28 MB/sec
+Epoch 5: Loss 0.6270, Accuracy 77.87%
+Batch size: 128, Training time for epoch: 9.79 seconds
+Batch size: 128, Communication time for epoch: 0.3982 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 112.23 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.6133, Accuracy 40.29%
+Batch size: 128, Training time for epoch: 11.36 seconds
+Batch size: 128, Communication time for epoch: 1.8435 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 24.24 MB/sec
+Epoch 2: Loss 1.1113, Accuracy 59.91%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3860 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 115.80 MB/sec
+Epoch 3: Loss 0.8636, Accuracy 69.69%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3851 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 116.08 MB/sec
+Epoch 4: Loss 0.7157, Accuracy 74.60%
+Batch size: 128, Training time for epoch: 9.80 seconds
+Batch size: 128, Communication time for epoch: 0.3856 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 115.90 MB/sec
+Epoch 5: Loss 0.6175, Accuracy 78.67%
+Batch size: 128, Training time for epoch: 9.79 seconds
+Batch size: 128, Communication time for epoch: 0.3841 seconds
+Bandwidth utilization for 4 GPUs and batch size 128: 116.35 MB/sec
+
+Running with 1 GPUs
+Files already downloaded and verified
+Epoch 1: Loss 1.5865, Accuracy 41.22%
+Batch size: 512, Training time for epoch: 38.57 seconds
+Batch size: 512, Communication time for epoch: 2.1834 seconds
+Bandwidth utilization for 1 GPUs and batch size 512: 20.47 MB/sec
+Epoch 2: Loss 1.0782, Accuracy 61.14%
+Batch size: 512, Training time for epoch: 37.03 seconds
+Batch size: 512, Communication time for epoch: 0.6573 seconds
+Bandwidth utilization for 1 GPUs and batch size 512: 68.00 MB/sec
+Epoch 3: Loss 0.8454, Accuracy 70.00%
+Batch size: 512, Training time for epoch: 37.09 seconds
+Batch size: 512, Communication time for epoch: 0.6561 seconds
+Bandwidth utilization for 1 GPUs and batch size 512: 68.13 MB/sec
+Epoch 4: Loss 0.7064, Accuracy 75.07%
+Batch size: 512, Training time for epoch: 37.05 seconds
+Batch size: 512, Communication time for epoch: 0.6549 seconds
+Bandwidth utilization for 1 GPUs and batch size 512: 68.25 MB/sec
+Epoch 5: Loss 0.6198, Accuracy 78.28%
+Batch size: 512, Training time for epoch: 37.03 seconds
+Batch size: 512, Communication time for epoch: 0.6540 seconds
+Bandwidth utilization for 1 GPUs and batch size 512: 68.34 MB/sec
+
+Running with 2 GPUs
+Files already downloaded and verified
+Epoch 1: Loss 1.7766, Accuracy 34.04%
+Batch size: 512, Training time for epoch: 20.32 seconds
+Batch size: 512, Communication time for epoch: 1.7111 seconds
+Bandwidth utilization for 2 GPUs and batch size 512: 26.12 MB/sec
+Epoch 2: Loss 1.3041, Accuracy 52.35%
+Batch size: 512, Training time for epoch: 18.95 seconds
+Batch size: 512, Communication time for epoch: 0.3442 seconds
+Bandwidth utilization for 2 GPUs and batch size 512: 129.84 MB/sec
+Epoch 3: Loss 1.0571, Accuracy 61.91%
+Batch size: 512, Training time for epoch: 18.90 seconds
+Batch size: 512, Communication time for epoch: 0.3440 seconds
+Bandwidth utilization for 2 GPUs and batch size 512: 129.93 MB/sec
+Epoch 4: Loss 0.9015, Accuracy 67.84%
+Batch size: 512, Training time for epoch: 18.96 seconds
+Batch size: 512, Communication time for epoch: 0.3422 seconds
+Bandwidth utilization for 2 GPUs and batch size 512: 130.63 MB/sec
+Epoch 5: Loss 0.7657, Accuracy 73.25%
+Batch size: 512, Training time for epoch: 18.99 seconds
+Batch size: 512, Communication time for epoch: 0.3427 seconds
+Bandwidth utilization for 2 GPUs and batch size 512: 130.44 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.7762, Accuracy 33.85%
+Batch size: 512, Training time for epoch: 20.32 seconds
+Batch size: 512, Communication time for epoch: 1.7157 seconds
+Bandwidth utilization for 2 GPUs and batch size 512: 26.05 MB/sec
+Epoch 2: Loss 1.2937, Accuracy 52.94%
+Batch size: 512, Training time for epoch: 18.95 seconds
+Batch size: 512, Communication time for epoch: 0.3457 seconds
+Bandwidth utilization for 2 GPUs and batch size 512: 129.29 MB/sec
+Epoch 3: Loss 1.0445, Accuracy 62.50%
+Batch size: 512, Training time for epoch: 18.90 seconds
+Batch size: 512, Communication time for epoch: 0.3451 seconds
+Bandwidth utilization for 2 GPUs and batch size 512: 129.52 MB/sec
+Epoch 4: Loss 0.8810, Accuracy 68.69%
+Batch size: 512, Training time for epoch: 18.96 seconds
+Batch size: 512, Communication time for epoch: 0.3441 seconds
+Bandwidth utilization for 2 GPUs and batch size 512: 129.89 MB/sec
+Epoch 5: Loss 0.7562, Accuracy 73.55%
+Batch size: 512, Training time for epoch: 18.99 seconds
+Batch size: 512, Communication time for epoch: 0.3448 seconds
+Bandwidth utilization for 2 GPUs and batch size 512: 129.64 MB/sec
+
+Running with 4 GPUs
+Files already downloaded and verified
+Epoch 1: Loss 1.9701, Accuracy 27.31%
+Batch size: 512, Training time for epoch: 11.11 seconds
+Batch size: 512, Communication time for epoch: 1.6297 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 27.43 MB/sec
+Epoch 2: Loss 1.5156, Accuracy 43.96%
+Batch size: 512, Training time for epoch: 9.59 seconds
+Batch size: 512, Communication time for epoch: 0.1830 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 244.27 MB/sec
+Epoch 3: Loss 1.3029, Accuracy 52.51%
+Batch size: 512, Training time for epoch: 9.60 seconds
+Batch size: 512, Communication time for epoch: 0.1837 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 243.26 MB/sec
+Epoch 4: Loss 1.1446, Accuracy 58.51%
+Batch size: 512, Training time for epoch: 9.59 seconds
+Batch size: 512, Communication time for epoch: 0.1826 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 244.72 MB/sec
+Epoch 5: Loss 1.0130, Accuracy 63.86%
+Batch size: 512, Training time for epoch: 9.61 seconds
+Batch size: 512, Communication time for epoch: 0.1834 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 243.64 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.9705, Accuracy 26.71%
+Batch size: 512, Training time for epoch: 11.11 seconds
+Batch size: 512, Communication time for epoch: 1.5966 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 28.00 MB/sec
+Epoch 2: Loss 1.5264, Accuracy 43.34%
+Batch size: 512, Training time for epoch: 9.59 seconds
+Batch size: 512, Communication time for epoch: 0.1775 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 251.75 MB/sec
+Epoch 3: Loss 1.3086, Accuracy 52.53%
+Batch size: 512, Training time for epoch: 9.60 seconds
+Batch size: 512, Communication time for epoch: 0.1783 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 250.66 MB/sec
+Epoch 4: Loss 1.1486, Accuracy 58.74%
+Batch size: 512, Training time for epoch: 9.59 seconds
+Batch size: 512, Communication time for epoch: 0.1770 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 252.49 MB/sec
+Epoch 5: Loss 1.0137, Accuracy 63.66%
+Batch size: 512, Training time for epoch: 9.61 seconds
+Batch size: 512, Communication time for epoch: 0.1778 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 251.38 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.9450, Accuracy 28.11%
+Batch size: 512, Training time for epoch: 11.11 seconds
+Batch size: 512, Communication time for epoch: 1.5972 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 27.98 MB/sec
+Epoch 2: Loss 1.4895, Accuracy 44.83%
+Batch size: 512, Training time for epoch: 9.59 seconds
+Batch size: 512, Communication time for epoch: 0.1812 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 246.64 MB/sec
+Epoch 3: Loss 1.2786, Accuracy 53.22%
+Batch size: 512, Training time for epoch: 9.60 seconds
+Batch size: 512, Communication time for epoch: 0.1820 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 245.58 MB/sec
+Epoch 4: Loss 1.1210, Accuracy 59.06%
+Batch size: 512, Training time for epoch: 9.59 seconds
+Batch size: 512, Communication time for epoch: 0.1808 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 247.21 MB/sec
+Epoch 5: Loss 0.9858, Accuracy 64.67%
+Batch size: 512, Training time for epoch: 9.61 seconds
+Batch size: 512, Communication time for epoch: 0.1827 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 244.63 MB/sec
+Files already downloaded and verified
+Epoch 1: Loss 1.9683, Accuracy 27.29%
+Batch size: 512, Training time for epoch: 11.11 seconds
+Batch size: 512, Communication time for epoch: 1.5915 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 28.08 MB/sec
+Epoch 2: Loss 1.5110, Accuracy 44.02%
+Batch size: 512, Training time for epoch: 9.59 seconds
+Batch size: 512, Communication time for epoch: 0.1781 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 250.96 MB/sec
+Epoch 3: Loss 1.3090, Accuracy 52.61%
+Batch size: 512, Training time for epoch: 9.60 seconds
+Batch size: 512, Communication time for epoch: 0.1791 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 249.49 MB/sec
+Epoch 4: Loss 1.1533, Accuracy 58.43%
+Batch size: 512, Training time for epoch: 9.59 seconds
+Batch size: 512, Communication time for epoch: 0.1782 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 250.87 MB/sec
+Epoch 5: Loss 1.0156, Accuracy 63.37%
+Batch size: 512, Training time for epoch: 9.61 seconds
+Batch size: 512, Communication time for epoch: 0.1787 seconds
+Bandwidth utilization for 4 GPUs and batch size 512: 250.10 MB/sec
